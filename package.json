@@ -1,31 +1,31 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
-  "engines": {
-    "node": "8.9.1"
-  },
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
-  },
-  "dependencies": {
-    "ejs": "^2.5.6",
-    "express": "^4.15.2"
-  },
-  "devDependencies": {
-    "request": "^2.81.0",
-    "tape": "^4.7.0"
-  },
+  "name": "api",
+  "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "git://github.com/node-token-authentication"
   },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT"
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha --timeout 20000 test/*.js"
+  },
+  "author": "Alex",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.0.1",
+    "aws-sdk": "^2.242.1",
+    "bcrypt": "^2.0.1",
+    "body-parser": "~1.0.1",
+    "cookie-parser": "^1.4.0",
+    "express": "~4.0.0",
+    "jsonwebtoken": "^7.1.9",
+    "mandrill-api": "^1.0.45",
+    "method-override": "~2.0.2",
+    "mongoose": "^5.0.2",
+    "morgan": "~1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "supertest": "^2.0.0"
+  }
 }
