@@ -342,7 +342,7 @@ exports.submitEventById = function(req, res) {
                             merge: true,
                             merge_language: 'handlebars',
                             to: sheetReceivers,
-                            subject: 'To Sheets',
+                            subject: 'ATTENDANCE SUMMARY',
                             global_merge_vars: [{
                                 name: 'courseNo',
                                 content: events[0].courseNo
@@ -412,7 +412,7 @@ exports.submitEventById = function(req, res) {
                                     name: 'CREDITS',
                                     content: events[0].numberOfCourseCredits
                                 }],
-                                subject: 'To Certs',
+                                subject: 'CERTIFICATE OF COURSE COMPLETION',
                                 from_email: "support@hojackconnections.com"
                             },
                             template_name: 'Certificate Template'
