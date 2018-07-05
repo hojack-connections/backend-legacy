@@ -152,7 +152,29 @@ exports.update = function(req, res) {
                         res.status(500).send(config.DB_ERROR);
                     }
                 }
-                res.json('UPDATED');
+                
+                Attendee.find({ event: req.params.id }, function (err, atts) {
+                    if (err) {
+                        return res.status(500).send(config.DB_ERROR);
+                    }
+                    res.json({
+                        _id: events[0]._id,
+                        name: events[0].name,
+                        date: events[0].date,
+                        address: events[0].address,
+                        city: events[0].city,
+                        state: events[0].state,
+                        zipcode: events[0].zipcode,
+                        courseNo: events[0].courseNo,
+                        courseName: events[0].courseName,
+                        numberOfCourseCredits: events[0].numberOfCourseCredits,
+                        presenterName: events[0].presenterName,
+                        trainingProvider: events[0].trainingProvider,
+                        isSubmitted: !!events[0].isSubmitted,
+                        attendees: atts
+                    });
+                });
+
             });
         }
     });
@@ -177,15 +199,17 @@ exports.delete = function(req, res) {
                     });
                 },
                 function (cb) {
-                    Attendee.find({ event: events[0]._id}, function(err, attendees) {
+                    Attendee.find({ event: req.params.id}, function(err, attendees) {
                         if (err) {
                             cb(err);
                         } else {
                             var signs = [];
                             attendees.forEach(function (attd) {
-                                if (attd.signature) signs.push({
-                                    Key: attd.signature
-                                });
+                                if (attd.signature) {
+                                    signs.push({
+                                        Key: attd.signature
+                                    });
+                                }
                             });
                             cb(null, signs);
                         }

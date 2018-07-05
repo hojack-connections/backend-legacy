@@ -195,7 +195,26 @@ exports.update = function(req, res) {
                         return res.status(500).send(config.DB_ERROR);
                     }
                 }
-                res.json('UPDATED');
+                var params = {
+                    Bucket: config.BUCKET,
+                    Key: attendees[0].signature,
+                };
+                
+                res.json({
+                    _id: attendees[0]._id,
+                    signature: attendees[0].signature ? s3.getSignedUrl('getObject', params) : '',
+                    firstname: attendees[0].firstname,
+                    lastname: attendees[0].lastname,
+                    email: attendees[0].email,
+                    phone: attendees[0].phone,
+                    event: attendees[0].event,
+                    isFilled: !!(attendees[0].signature &&
+                            attendees[0].firstname &&
+                            attendees[0].lastname &&
+                            attendees[0].email &&
+                            attendees[0].phone &&
+                            attendees[0].event)
+                });
             });
         }
     });
