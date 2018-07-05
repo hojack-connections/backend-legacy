@@ -178,7 +178,7 @@ exports.getAttendee = function(req, res) {
 
 exports.update = function(req, res) {
 
-    Attendee.find({ _id: req.params.id }, function(err, attendees) {
+    Attendee.find({ _id: req.params.id }).populate('event').exec(function(err, attendees) {
         if (err) {
             res.status(500).send(config.DB_ERROR);
         } else if (attendees.length === 0) {
