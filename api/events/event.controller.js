@@ -400,7 +400,7 @@ exports.submitEventById = function(req, res) {
                                 email: attendee.email
                             }]);
                         } else {
-                            receivers = [].concat(certReceivers.concat);
+                            receivers = [].concat(certReceivers);
                         }
                         var templateData = {
                             key: config.MANDRILL_API_KEY,
