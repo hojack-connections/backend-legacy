@@ -377,6 +377,12 @@ exports.submitEventById = function(req, res) {
                                 name: 'address',
                                 content: events[0].address
                             }, {
+                                name: 'city',
+                                content: events[0].city
+                            }, {
+                                name: 'state',
+                                content: events[0].state
+                            }, {
                                 name: 'presenterName',
                                 content: events[0].presenterName
                             }, {
